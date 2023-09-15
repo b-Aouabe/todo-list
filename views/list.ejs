@@ -1,0 +1,33 @@
+<%-  include("header") -%>
+
+    <div class="box" id="heading">    
+        <h1><%= listTitle %></h1>
+    </div>
+    
+    <div class="box">
+
+        <% tasks.forEach(task => { %>
+            <div class="item">
+                <input type="checkbox" name="" id="">
+                <p><%= task.title %></p>
+
+                <form action="/delete" method="post">
+                    <button type="submit" name="delTask" value="<%= task._id %>"><i class="fa-solid fa-trash"></i></button>
+                </form>
+
+                <form action="/update" method="post">
+                    <button type="submit" name="updateTask" value="<%= task._id %>"><i class="fa-solid fa-pen"></i></button>
+                </form>
+
+            </div>
+        <% }) %>  
+
+        <form class="item" action="/" method="post">
+            <input type="text" name="addedTask" placeholder="new item" autocomplete="off">
+            <button type="submit" name="list" value="<%= listTitle %>">+</button>
+        </form>
+
+    </div>
+
+    <%-  include("footer") -%>
+
